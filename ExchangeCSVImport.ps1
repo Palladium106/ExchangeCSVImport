@@ -1,5 +1,5 @@
 ﻿#Sript for import mail contacts into AD using Exchange Management Console.
-#ExchangeCSVImport.conf file must be stored in the one folder with script.
+#ExchangeCSVImport.conf file must be stored in the one folder with the script.
 
 if((Get-Command New-MailContact -errorAction SilentlyContinue) -eq $null)
 {
