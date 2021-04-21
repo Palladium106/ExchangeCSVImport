@@ -10,7 +10,7 @@ if((Get-Command New-MailContact -errorAction SilentlyContinue) -eq $null)
 #Exit if ExchangeCSVImport.conf file not found.
 if((Test-Path ExchangeCSVImport.conf) -ne $true) 
 {
-	Write-Host "'ExchangeCSVImport.conf' must be stored in the one folder with script" -foregroundcolor red
+	Write-Host "'ExchangeCSVImport.conf' must be stored in the one folder with the script" -foregroundcolor red
 	return
 }
 
