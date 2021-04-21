@@ -45,7 +45,7 @@ switch ($choice)
 #Exit script if CSV file not found.
 if((Test-Path $config.CSVFileName) -ne $true) 
 {
-	Write-Host "File '$($config.CSVFileName)' does not exists"
+	Write-Host "File '$($config.CSVFileName)' does not exists" -foregroundcolor red
 	return
 }
 
