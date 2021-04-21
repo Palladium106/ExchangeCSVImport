@@ -49,7 +49,7 @@ if((Test-Path $config.CSVFileName) -ne $true)
 	return
 }
 
-#Main input procedure
+#Main import procedure
 Import-CSV -Path $config.CSVFileName -Delimiter "," | ForEach-Object `
 -process{
 	$FullName = $_.DisplayName
@@ -81,7 +81,7 @@ Import-CSV -Path $config.CSVFileName -Delimiter "," | ForEach-Object `
 	if($config.CompanyName -ne $null) {$Company = $config.CompanyName}
 	else {$Company = $_.Company}
 	
-	#Set other attributes
+	#Set other attributes.
 	try
 	{	
 		Set-Contact $_.SamAccountName `
