@@ -21,8 +21,7 @@ Get-Content ".\ExchangeCSVImport.conf" | foreach-object -begin {$config=@{}} `
 	{
 		$k = $_.Split("=")
 		#Parse only not empty strings not beginned with "[" and "#"
-		if(($k[0].CompareTo("") -ne 0) `
-		-and ($k[0].StartsWith("[") -ne $True) `
+		if  (($k[0].StartsWith("[") -ne $True) `
 		-and ($k[0].StartsWith("#") -ne $True))
 		{
 			$config.Add($k[0].Trim(), $k[1].Trim())
