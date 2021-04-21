@@ -3,7 +3,7 @@
 
 if((Get-Command New-MailContact -errorAction SilentlyContinue) -eq $null)
 {
-	Write-Error "This script must be executed on the Exchange Management Console!" 
+	Write-Error "This script must be executed on the Exchange Management Console!" -foregroundcolor red
 	return
 }
 
