@@ -7,13 +7,14 @@ if((Get-Command New-MailContact -errorAction SilentlyContinue) -eq $null)
 	return
 }
 
-#Exit if ExchangeCSVImport.conf file not found
+#Exit if ExchangeCSVImport.conf file not found.
 if((Test-Path ExchangeCSVImport.conf) -ne $true) 
 {
 	Write-Host "'ExchangeCSVImport.conf' must be stored in the one folder with script" -foregroundcolor red
 	return
 }
 
+#Parsing ExchangeCSVImport.conf file.
 Get-Content ".\ExchangeCSVImport.conf" | foreach-object -begin {$config=@{}} `
 	-process {
 	#Parse only strings that contains "="
@@ -41,7 +42,7 @@ switch ($choice)
 	Default {return}
 }
 
-#Exit script if CSV file not found
+#Exit script if CSV file not found.
 if((Test-Path $config.CSVFileName) -ne $true) 
 {
 	Write-Host "File '$($config.CSVFileName)' does not exists"
@@ -52,10 +53,10 @@ if((Test-Path $config.CSVFileName) -ne $true)
 Import-CSV -Path $config.CSVFileName -Delimiter "," | ForEach-Object `
 -process{
 	$FullName = $_.DisplayName
-	#Split Full User Name to place it in the right fields
+	#Split Full User Name to place it in the right fields.
 	$SplittedlName = $FullName.Split(" ",2)
 	
-	#Create contact and set basic attributes
+	#Create contact and set basic attributes.
 	try
 	{
 		New-MailContact -Name $FullName `
@@ -76,7 +77,7 @@ Import-CSV -Path $config.CSVFileName -Delimiter "," | ForEach-Object `
 		Write-Host "Specified User: '$($FullName)' already exists" -foregroundcolor yellow
 	}
 	
-	#Check if the Custom Company Name is set
+	#Check if the Custom Company Name is set.
 	if($config.CompanyName -ne $null) {$Company = $config.CompanyName}
 	else {$Company = $_.Company}
 	
