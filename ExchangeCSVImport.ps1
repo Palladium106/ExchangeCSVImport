@@ -38,6 +38,7 @@ $choice=Read-Host "`nDo you want to continue? (Y/n)"
 switch ($choice)
 {
 	"y" {break}
+	"Y" {break}
 	"" {break}
 	Default {return}
 }
